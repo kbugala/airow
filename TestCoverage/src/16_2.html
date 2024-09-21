@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow.Tests/Loaders/LapsLoaderTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AIRow.Loaders;
+
+namespace AIRow.Tests.Loaders;
+
+public class LapsDataLoaderTests
+{
+    [Fact]
+    public void Load_ShouldReturnValidLaps_WhenGivenValidJson()
+    {
+        // Arrange
+        var lapsData = @&quot;
+        [
+            {
+                &quot;&quot;startTimeInSeconds&quot;&quot;: 1661158927,
+                &quot;&quot;totalDistanceInMeters&quot;&quot;: 15,
+                &quot;&quot;timerDurationInSeconds&quot;&quot;: 600,
+                &quot;&quot;heartRate&quot;&quot;: 109
+            },
+            {
+                &quot;&quot;startTimeInSeconds&quot;&quot;: 1661158929,
+                &quot;&quot;totalDistanceInMeters&quot;&quot;: 30,
+                &quot;&quot;timerDurationInSeconds&quot;&quot;: 900,
+                &quot;&quot;heartRate&quot;&quot;: 107
+            }
+        ]&quot;;
+        var lapsLoader = new LapsDataLoader();
+
+        // Act
+        var laps = lapsLoader.Load(lapsData);
+
+        // Assert
+        Assert.Equal(2, laps.Count);
+        Assert.Equal(1661158927, laps[0].StartTimeInSeconds);
+        Assert.Equal(15, laps[0].TotalDistanceInMeters);
+        Assert.Equal(109, laps[0].HeartRate);
+        Assert.Equal(1661158929, laps[1].StartTimeInSeconds);
+        Assert.Equal(30, laps[1].TotalDistanceInMeters);
+        Assert.Equal(107, laps[1].HeartRate);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,5,9,6,1],[11,9,25,12,1],[26,9,26,47,1],[29,9,29,46,1],[32,9,32,37,1],[33,9,33,62,1],[34,9,34,57,1],[35,9,35,46,1],[36,9,36,62,1],[37,9,37,57,1],[38,9,38,46,1],[39,5,39,6,1]]);
+    </script>
+  </body>
+</html>

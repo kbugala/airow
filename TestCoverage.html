@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="main">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>TestCoverage</title>
+
+    <script type="text/javascript" src="TestCoverage/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="TestCoverage/js/jquery.ui.custom-1.8.7.min.js"></script>
+    <script type="text/javascript" src="TestCoverage/js/jquery.dynatree-1.2.4.min.js"></script>
+    <script type="text/javascript" src="TestCoverage/js/jquery.cookie-1.3.1.min.js"></script>
+    <script type="text/javascript" src="TestCoverage/js/jquery.splitter-1.5.1.min.js"></script>
+    <script type="text/javascript" src="TestCoverage/js/dotcover.report.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="TestCoverage/css/dotcover.report.css">
+    <link rel="stylesheet" type="text/css" href="TestCoverage/css/dotcover.report.gen.css">
+    <link rel="stylesheet" type="text/css" href="TestCoverage/css/jquery.dynatree.css">
+  </head>
+
+  <body>
+    <div class="header"><span class="title">TestCoverage Coverage Report</span><span class="info">Generated: Saturday, 21 September 2024 21:44:59</span></div>
+    <div class="content" id="content"><div id="coverageTree"></div><iframe id="sourceCode"></iframe></div>
+    <div class="footer">JetBrains dotCover 2024.1.4 Copyright &copy; 2010-2024 <a href="https://www.jetbrains.com/dotcover/" target="_blank">Product Homepage</a> | <a href="https://www.jetbrains.com/feedback/feedback.jsp?product=dotCover&build=4&timezone=Central European Standard Time" target="_blank">Feedback</a> | <a href="https://www.jetbrains.com/" target="_blank">Company</a></div>
+
+    <script type="text/javascript">
+      var resourceFolder = "TestCoverage";
+      var blockSize = 50000;
+      block0 = [["Total",98,0,,,,,1,2],["AIRow",97,1,,,,,3],["AIRow.Tests",100,1,,,,,4],["AIRow",97,2,,,,,5,5],["AIRow.Tests",100,2,,,,,10,4],["Predictors",88,2,,,,,14],["Preprocessors",92,2,,,,,15],["Data",100,2,,,,,16,6],["Processors",100,2,,,,,22],["Loaders",100,2,,,,,23,3],["Predictors",100,2,,,,,26],["Preprocessors",100,2,,,,,27],["Processors",100,2,,,,,28],["Loaders",100,2,,,,,29,3],["HeartRatePredictor",88,3,,,,,32,2],["SamplesPreprocessor",92,3,,,,,34,2],["ActivityData",100,4,,,,,36],["Lap",100,4,,,,,37],["ProcessedSample",100,4,,,,,38],["Sample",100,4,,,,,39],["SampleData",100,4,,,,,40],["Summary",100,4,,,,,41],["DataProcessor",100,3,,,,,42,3],["LapsDataLoader",100,3,,,,,45],["SummaryLoader",100,3,,,,,46],["SamplesLoader",100,3,,,,,47,5],["HeartRatePredictorTests",100,3,,,,,52,2],["SamplesPreprocessorTests",100,3,,,,,54,2],["DataProcessorTests",100,3,,,,,56,2],["SamplesLoaderTests",100,3,,,,,58],["LapsDataLoaderTests",100,3,,,,,59],["SummaryLoaderTests",100,3,,,,,60,2],["CalculateRMSE(List&lt;double&gt;,List&lt;double&gt;):double",85,5,10,18,5,1],["PredictNextMedian(List&lt;double&gt;):double",100,5,10,11,5,1],["CleanOutliers(List&lt;double&gt;):List&lt;double&gt;",80,5,11,12,5,1,62,3],["InterpolateHeartRateObservations(List&lt;double&gt;):List&lt;double&gt;",100,5,11,26,5,1],["ActivityData(Summary,List&lt;Lap&gt;,List&lt;List&lt;Sample&gt;&gt;)",100,6,1,3,15,1],["Lap(long,int,int,int)",100,6,2,5,15,1],["ProcessedSample(int,double)",100,6,3,8,15,1],["Sample(int,int)",100,6,4,3,15,1],["SampleData(string,string)",100,6,5,5,15,1],["Summary(string,long,string,int,long,string,int,int,string,int)",100,6,6,5,15,1],["ExportToJson(ActivityData):string",100,5,12,30,5,1],["DataProcessor()",100,6,12,13,5,1],["Process(string,string,string):ActivityData",100,5,12,21,5,1],["Load(string):List&lt;Lap&gt;",100,5,7,9,5,1],["Load(string):Summary",100,5,9,9,5,1],["SamplesLoader()",100,6,8,13,5,1],["ProcessHeartRateSample(string):List&lt;Sample&gt;",100,7,8,68,5,1],["Load(string):List&lt;List&lt;Sample&gt;&gt;",100,5,8,52,5,1],["Interpolate(int[]):int[]",100,7,8,82,5,1],["LoadAndProcess(string):List&lt;List&lt;ProcessedSample&gt;&gt;",100,5,8,25,5,1,65,2],["PredictNextMedian_ShouldReturnValidPrediction():void",100,5,19,9,5,2],["CalculateRMSE_ShouldReturnValidRMSE():void",100,5,19,23,5,2],["CleanOutliers_ShouldRemoveOutliersFromData():void",100,5,20,9,5,2],["InterpolateHeartRateObservations_ShouldReturnInterpolatedValues():void",100,5,20,24,5,2],["Process_ShouldReturnValidActivityData_WhenGivenValidJson():void",100,5,21,10,5,2],["ExportToJson_ShouldReturnJsonString_WhenGivenValidActivityData():void",100,5,21,62,5,2],["Load_ShouldReturnProcessedSamples_WhenGivenValidJson():void",100,5,17,9,5,2],["Load_ShouldReturnValidLaps_WhenGivenValidJson():void",100,5,16,9,5,2],["LoadAndProcess_ShouldCleanAndInterpolateSamples():void",100,5,18,40,5,2],["Load_ShouldReturnValidSummary_WhenGivenValidJson():void",100,5,18,9,5,2],["own coverage",75,8,11,12,5,1],["(double):double",100,9,11,14,49,1],["(double):bool",100,9,11,21,32,1],["(double,int):ProcessedSample",100,9,8,39,73,1],["own coverage",100,8,8,25,5,1]];
+      coverageData = [block0];
+    </script>
+  </body>
+</html>

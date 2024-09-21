@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow/Predictors/HeartRatePredictor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace AIRow.Predictors;
+
+/// &lt;summary&gt;
+/// A simple predictive model that uses previous heart rate samples to predict the median of the next five values.
+/// This class will perform model training and testing, using Root Mean Squared Error (RMSE) as the error metric to evaluate the performance of the model.
+/// &lt;/summary&gt;
+public class HeartRatePredictor
+{
+    // Predict the median of the next 5 heart rate samples based on previous samples
+    public double PredictNextMedian(List&lt;double&gt; previousSamples)
+    {
+        // For simplicity, the prediction is the average of the last 5 samples
+        return previousSamples.Skip(previousSamples.Count - 5).Average();
+    }
+
+    // Calculate the RMSE (Root Mean Squared Error) between predicted and actual values
+    public double CalculateRMSE(List&lt;double&gt; actualValues, List&lt;double&gt; predictedValues)
+    {
+        if (actualValues.Count != predictedValues.Count)
+        {
+            throw new ArgumentException(&quot;The number of actual and predicted values must be the same.&quot;);
+        }
+
+        double sumSquaredErrors = 0.0;
+
+        for (int i = 0; i &lt; actualValues.Count; i++)
+        {
+            sumSquaredErrors += Math.Pow(actualValues[i] - predictedValues[i], 2);
+        }
+
+        return Math.Sqrt(sumSquaredErrors / actualValues.Count);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,5,11,6,1],[13,9,13,74,1],[14,5,14,6,1],[18,5,18,6,1],[19,9,19,57,1],[20,9,20,10,0],[21,13,21,104,0],[24,9,24,39,1],[26,14,26,23,1],[26,25,26,47,1],[26,49,26,52,1],[27,9,27,10,1],[28,13,28,83,1],[29,9,29,10,1],[31,9,31,65,1],[32,5,32,6,1]]);
+    </script>
+  </body>
+</html>

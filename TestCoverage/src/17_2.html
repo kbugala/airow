@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow.Tests/Loaders/SamplesLoaderTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AIRow.Loaders;
+
+namespace AIRow.Tests.Loaders;
+
+public class SamplesLoaderTests
+{
+    [Fact]
+    public void Load_ShouldReturnProcessedSamples_WhenGivenValidJson()
+    {
+        // Arrange
+        var samplesData = @&quot;
+        [
+            { &quot;&quot;recording-rate&quot;&quot;: 5, &quot;&quot;sample-type&quot;&quot;: &quot;&quot;2&quot;&quot;, &quot;&quot;data&quot;&quot;: &quot;&quot;120,126,122,140,142,155,145&quot;&quot; },
+            { &quot;&quot;recording-rate&quot;&quot;: 5, &quot;&quot;sample-type&quot;&quot;: &quot;&quot;2&quot;&quot;, &quot;&quot;data&quot;&quot;: &quot;&quot;141,147,155,160,180,152,120&quot;&quot; }
+        ]&quot;;
+        var samplesLoader = new SamplesLoader();
+
+        // Act
+        var samples = samplesLoader.Load(samplesData);
+
+        // Assert
+        Assert.Equal(2, samples.Count);  // Two sample groups
+        Assert.Equal(30, samples[0].Count);  // First group: 6 intervals * 5 interpolated values
+        Assert.Equal(30, samples[1].Count);  // Second group: same logic
+        Assert.Equal(120, samples[0][0].HeartRate);  // First sample in first group
+        Assert.Equal(141, samples[1][0].HeartRate);  // First sample in second group
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,5,9,6,1],[11,9,15,12,1],[16,9,16,49,1],[19,9,19,55,1],[22,9,22,40,1],[23,9,23,44,1],[24,9,24,44,1],[25,9,25,52,1],[26,9,26,52,1],[27,5,27,6,1]]);
+    </script>
+  </body>
+</html>

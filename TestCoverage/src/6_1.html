@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow/Data/Summary.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Text.Json.Serialization;
+
+namespace AIRow.Data;
+
+public record Summary(
+    [property: JsonPropertyName(&quot;userId&quot;)] string UserId,
+    [property: JsonPropertyName(&quot;activityId&quot;)] long ActivityId,
+    [property: JsonPropertyName(&quot;activityName&quot;)] string ActivityName,
+    [property: JsonPropertyName(&quot;durationInSeconds&quot;)] int DurationInSeconds,
+    [property: JsonPropertyName(&quot;startTimeInSeconds&quot;)] long StartTimeInSeconds,
+    [property: JsonPropertyName(&quot;activityType&quot;)] string ActivityType,
+    [property: JsonPropertyName(&quot;averageHeartRateInBeatsPerMinute&quot;)] int AverageHeartRateInBeatsPerMinute,
+    [property: JsonPropertyName(&quot;activeKilocalories&quot;)] int ActiveKilocalories,
+    [property: JsonPropertyName(&quot;deviceName&quot;)] string DeviceName,
+    [property: JsonPropertyName(&quot;maxHeartRateInBeatsPerMinute&quot;)] int MaxHeartRateInBeatsPerMinute
+);
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow/Data/Lap.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Text.Json.Serialization;
+
+namespace AIRow.Data;
+
+public record Lap(
+    [property: JsonPropertyName(&quot;startTimeInSeconds&quot;)] long StartTimeInSeconds,
+    [property: JsonPropertyName(&quot;totalDistanceInMeters&quot;)] int TotalDistanceInMeters,
+    [property: JsonPropertyName(&quot;timerDurationInSeconds&quot;)] int TimerDurationInSeconds,
+    [property: JsonPropertyName(&quot;heartRate&quot;)] int HeartRate
+);
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([]);
+    </script>
+  </body>
+</html>

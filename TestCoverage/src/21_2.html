@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow.Tests/Processors/DataProcessorTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AIRow.Data;
+using AIRow.Processors;
+
+namespace AIRow.Tests.Processors;
+
+public class DataProcessorTests
+{
+    [Fact]
+    public void Process_ShouldReturnValidActivityData_WhenGivenValidJson()
+    {
+        // Arrange
+        var summaryData = @&quot;
+        {
+            &quot;&quot;userId&quot;&quot;: &quot;&quot;1234567890&quot;&quot;,
+            &quot;&quot;activityId&quot;&quot;: 9480958402,
+            &quot;&quot;activityName&quot;&quot;: &quot;&quot;Indoor Cycling&quot;&quot;,
+            &quot;&quot;durationInSeconds&quot;&quot;: 3667,
+            &quot;&quot;startTimeInSeconds&quot;&quot;: 1661158927,
+            &quot;&quot;activityType&quot;&quot;: &quot;&quot;INDOOR_CYCLING&quot;&quot;,
+            &quot;&quot;averageHeartRateInBeatsPerMinute&quot;&quot;: 150,
+            &quot;&quot;activeKilocalories&quot;&quot;: 561,
+            &quot;&quot;deviceName&quot;&quot;: &quot;&quot;instinct2&quot;&quot;,
+            &quot;&quot;maxHeartRateInBeatsPerMinute&quot;&quot;: 190
+        }&quot;;
+
+        var lapsData = @&quot;
+        [
+            {
+                &quot;&quot;startTimeInSeconds&quot;&quot;: 1661158927,
+                &quot;&quot;totalDistanceInMeters&quot;&quot;: 15,
+                &quot;&quot;timerDurationInSeconds&quot;&quot;: 600,
+                &quot;&quot;heartRate&quot;&quot;: 109
+            },
+            {
+                &quot;&quot;startTimeInSeconds&quot;&quot;: 1661158929,
+                &quot;&quot;totalDistanceInMeters&quot;&quot;: 30,
+                &quot;&quot;timerDurationInSeconds&quot;&quot;: 900,
+                &quot;&quot;heartRate&quot;&quot;: 107
+            }
+        ]&quot;;
+
+        var samplesData = @&quot;
+        [
+            { &quot;&quot;recording-rate&quot;&quot;: 5, &quot;&quot;sample-type&quot;&quot;: &quot;&quot;2&quot;&quot;, &quot;&quot;data&quot;&quot;: &quot;&quot;120,126,122,140,142,155,145&quot;&quot; },
+            { &quot;&quot;recording-rate&quot;&quot;: 5, &quot;&quot;sample-type&quot;&quot;: &quot;&quot;2&quot;&quot;, &quot;&quot;data&quot;&quot;: &quot;&quot;141,147,155,160,180,152,120&quot;&quot; }
+        ]&quot;;
+
+        var processor = new DataProcessor();
+
+        // Act
+        var activityData = processor.Process(summaryData, lapsData, samplesData);
+
+        // Assert
+        Assert.NotNull(activityData);
+        Assert.Equal(&quot;1234567890&quot;, activityData.Summary.UserId);
+        Assert.Equal(2, activityData.Laps.Count);
+        Assert.Equal(2, activityData.Samples.Count);
+    }
+
+    [Fact]
+    public void ExportToJson_ShouldReturnJsonString_WhenGivenValidActivityData()
+    {
+        // Arrange
+        var summary = new Summary(
+            &quot;1234567890&quot;,
+            9480958402,
+            &quot;Indoor Cycling&quot;,
+            3667,
+            1661158927,
+            &quot;INDOOR_CYCLING&quot;,
+            150,
+            561,
+            &quot;instinct2&quot;,
+            190
+        );
+
+        var laps = new List&lt;Lap&gt;
+        {
+            new Lap(1661158927, 15, 600, 109),
+            new Lap(1661158929, 30, 900, 107)
+        };
+
+        var samples = new List&lt;List&lt;Sample&gt;&gt;
+        {
+            new List&lt;Sample&gt;
+            {
+                new Sample(0, 120),
+                new Sample(1, 122),
+                new Sample(2, 140)
+            }
+        };
+
+        var processor = new DataProcessor();
+        var activityData = new ActivityData(summary, laps, samples);
+
+        // Act
+        var jsonOutput = processor.ExportToJson(activityData);
+
+        // Assert
+        Assert.Contains(&quot;\&quot;userId\&quot;: \&quot;1234567890\&quot;&quot;, jsonOutput);
+        Assert.Contains(&quot;\&quot;activityId\&quot;: 9480958402&quot;, jsonOutput);
+        Assert.Contains(&quot;\&quot;activityName\&quot;: \&quot;Indoor Cycling\&quot;&quot;, jsonOutput);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,5,10,6,1],[12,9,24,12,1],[26,9,40,12,1],[42,9,46,12,1],[48,9,48,45,1],[51,9,51,82,1],[54,9,54,38,1],[55,9,55,65,1],[56,9,56,50,1],[57,9,57,53,1],[58,5,58,6,1],[62,5,62,6,1],[64,9,75,11,1],[77,9,81,11,1],[83,9,91,11,1],[93,9,93,45,1],[94,9,94,69,1],[97,9,97,63,1],[100,9,100,67,1],[101,9,101,67,1],[102,9,102,77,1],[103,5,103,6,1]]);
+    </script>
+  </body>
+</html>

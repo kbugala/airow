@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow.Tests/Preprocessors/SamplesPreprocessorTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AIRow.Preprocessors;
+
+namespace AIRow.Tests.Preprocessors;
+
+public class SamplesPreprocessorTests
+{
+    [Fact]
+    public void CleanOutliers_ShouldRemoveOutliersFromData()
+    {
+        // Arrange
+        var preprocessor = new SamplesPreprocessor();
+        var data = new List&lt;double&gt; { 120, 122, 123, 1500, 124, 121 }; // 1500 is an outlier
+
+        // Act
+        var cleanedData = preprocessor.CleanOutliers(data);
+
+        // Assert
+        Assert.DoesNotContain(1500, cleanedData); // 1500 should be removed as an outlier
+        Assert.Equal(5, cleanedData.Count);               // Only 5 values should remain
+    }
+
+    [Fact]
+    public void InterpolateHeartRateObservations_ShouldReturnInterpolatedValues()
+    {
+        // Arrange
+        var preprocessor = new SamplesPreprocessor();
+        var aggregatedData = new List&lt;double&gt; { 120, 125 }; // Simple data
+
+        // Act
+        var interpolated = preprocessor.InterpolateHeartRateObservations(aggregatedData);
+
+        // Assert
+        Assert.Equal(5, interpolated.Count); // Should interpolate to 5 values
+        Assert.Equal(120, interpolated[0]); // First value should match the original
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,5,9,6,1],[11,9,11,54,1],[12,9,12,71,1],[15,9,15,60,1],[18,9,18,50,1],[19,9,19,44,1],[20,5,20,6,1],[24,5,24,6,1],[26,9,26,54,1],[27,9,27,60,1],[30,9,30,90,1],[33,9,33,45,1],[34,9,34,44,1],[35,5,35,6,1]]);
+    </script>
+  </body>
+</html>

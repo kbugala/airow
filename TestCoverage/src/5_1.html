@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kamil/airow/AIRow/Data/SampleData.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Text.Json.Serialization;
+
+namespace AIRow.Data;
+
+public record SampleData(
+    [property: JsonPropertyName(&quot;sample-type&quot;)] string SampleType,
+    [property: JsonPropertyName(&quot;data&quot;)] string Data
+);
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([]);
+    </script>
+  </body>
+</html>
